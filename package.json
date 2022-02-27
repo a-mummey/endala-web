@@ -1,0 +1,12 @@
+{
+  "name": "endala-web",
+  "version": "1.0.0",
+  "description": "Frontend website for the Endala Stargaze NFT project",
+  "main": "index.js",
+  "repository": "https://github.com/a-mummey/endala-web.git",
+  "author": "Adrian Mummey <amummey@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cosmwasm": "^0.27.1-1"
+  }
+}
