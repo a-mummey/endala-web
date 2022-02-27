@@ -1,5 +1,6 @@
 import { SigningCosmWasmClient } from "cosmwasm";
 import connectIfNotExists from "./stargazeTestnet";
+import mintSender from "./mint";
 
 // console.log(cosmwasm);
 
@@ -7,10 +8,9 @@ const config = {
   chainId: "big-bang-1",
   rpcEndpoint: "https://rpc.big-bang-1.stargaze-apis.com/",
   prefix: "wasm",
-};
-
-const nftContractConfig = {
   sg721: "stars1uwakrjs8c0mhak9zz3kush2mnsfvweyqm4re70q4rk4msm7hjsnslcr07p", // UPDATE ME to your contract
+  minter: "stars1jc4gk0ua02kvrpggat77r25226h6hg5rrfwlywu7zclkdscjwlhqd56hmm", // UPDATE ME to your contract
+  mintPriceStars: 200,
 };
 
 const setupWebKeplr = async () => {
@@ -38,7 +38,6 @@ const setupWebKeplr = async () => {
       gasPrice,
     }
   );
-
   return signingClient;
 };
 
@@ -49,7 +48,7 @@ async function main() {
   const client = await setupWebKeplr(config);
   console.log(client);
 
-  const sg721 = nftContractConfig.sg721;
+  const sg721 = config.sg721;
 
   //These are just tests
 
@@ -62,6 +61,10 @@ async function main() {
   });
 
   console.log(token);
+
+  const account = await client.getChainId();
+  console.log(account);
+  mintSender(client, config);
 }
 
 window.onload = function () {
