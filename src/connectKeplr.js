@@ -9,6 +9,10 @@ const config = {
   prefix: "wasm",
 };
 
+const nftContractConfig = {
+  sg721: "stars1uwakrjs8c0mhak9zz3kush2mnsfvweyqm4re70q4rk4msm7hjsnslcr07p", // UPDATE ME to your contract
+};
+
 const setupWebKeplr = async () => {
   // check browser compatibility
   if (!window.keplr) {
@@ -45,8 +49,10 @@ async function main() {
   const client = await setupWebKeplr(config);
   console.log(client);
 
-  const sg721 =
-    "stars1uwakrjs8c0mhak9zz3kush2mnsfvweyqm4re70q4rk4msm7hjsnslcr07p";
+  const sg721 = nftContractConfig.sg721;
+
+  //These are just tests
+
   const contract = await client.queryContractSmart(sg721, {
     contract_info: {},
   });
