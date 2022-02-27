@@ -108,6 +108,18 @@ async function main() {
 
   const client = await setupWebKeplr(config);
   console.log(client);
+
+  const sg721 =
+    "stars1uwakrjs8c0mhak9zz3kush2mnsfvweyqm4re70q4rk4msm7hjsnslcr07p";
+  const contract = await client.queryContractSmart(sg721, {
+    contract_info: {},
+  });
+  console.log(contract);
+  const token = await client.queryContractSmart(sg721, {
+    nft_info: { token_id: "1" },
+  });
+
+  console.log(token);
 }
 
 window.onload = function () {
