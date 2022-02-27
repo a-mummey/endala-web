@@ -64,7 +64,7 @@ async function main() {
 
   const account = await client.getChainId();
   console.log(account);
-  mintSender(client, config);
+  // mintSender(client, config);
 }
 
 window.onload = function () {
