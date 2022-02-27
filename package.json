@@ -7,9 +7,11 @@
   "author": "Adrian Mummey <amummey@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "cosmwasm": "^0.27.1-1"
+    "browser-resolve": "^2.0.0",
+    "cosmwasm": "^0.27.1-1",
+    "esmify": "^2.1.1"
   },
   "scripts": {
-    "build": "browserify src/connectKeplr.js > dist/index.js"
+    "build": "browserify  src/connectKeplr.js -p esmify > dist/index.js"
   }
 }
