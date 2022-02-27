@@ -8,5 +8,8 @@
   "license": "MIT",
   "dependencies": {
     "cosmwasm": "^0.27.1-1"
+  },
+  "scripts": {
+    "build": "browserify src/connectKeplr.js > dist/index.js"
   }
 }
