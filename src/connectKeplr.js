@@ -62,7 +62,7 @@ async function main() {
     window.keplr.experimentalSuggestChain({
       chainId: "big-bang-1",
       rpc: "https://rpc.big-bang-1.stargaze-apis.com/",
-      rest: "https://lcd.big-bang-1.stargaze-apis.com/",
+      rest: "https://rest.big-bang-1.stargaze-apis.com/",
       chainName: "Stargaze Test",
       bech32Config: defaultBech32Config("stars"),
       bip44: {
