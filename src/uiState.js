@@ -34,8 +34,8 @@ class UiState {
     const imgSrc = await this.nftHelper.getNftImage(tokenId);
     const imgEl = document.getElementById("endala-img");
     const imgWrapEl = document.getElementById("endala-img-wrap");
-    imgEl.src = imgSrc;
     imgWrapEl.style.display = "block";
+    imgEl.src = imgSrc;
   };
 
   updateProgress = async () => {
