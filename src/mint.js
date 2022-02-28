@@ -21,10 +21,11 @@ async function mintSender(client, config) {
     MINT_FEE
   );
   const wasmEvent = result.logs[0].events.find((e) => e.type === "wasm");
-  console.info(
-    "The `wasm` event emitted by the contract execution:",
-    wasmEvent
-  );
+  //   console.log(wasmEvent.attributes[5].key === "token_id");
+  const tokenId = wasmEvent.attributes.find((a) => a.key === "token_id");
+  //   console.log(tokenId);
+  console.log(`Minted token id:${tokenId.value}`);
+  return tokenId.value;
 }
 
 export default mintSender;

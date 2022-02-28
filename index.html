@@ -1,8 +1,31 @@
 <html>
   <head>
     <script src="/dist/index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/css/custom.css" />
   </head>
   <body>
-    Hello
+    <div class="hero" data-theme="dark">
+      <header class="container">
+        <hgroup>
+          <h1>Endala</h1>
+          <h2>A Stargaze NFT Project</h2>
+        </hgroup>
+        <p>
+          <a id="mintButton" href="#" role="button" class="secondary"
+            >Loading</a
+          >
+        </p>
+      </header>
+    </div>
+    <main class="container">
+      <div id="endala-img-wrap" style="display: none">
+        <h2>Your new Endala has arrived!</h2>
+        <img id="endala-img" src="" />
+      </div>
+    </main>
   </body>
 </html>

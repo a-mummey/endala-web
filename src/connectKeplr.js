@@ -1,9 +1,11 @@
 import { SigningCosmWasmClient } from "cosmwasm";
+import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 import connectIfNotExists from "./stargazeTestnet";
 import mintSender from "./mint";
 
 // console.log(cosmwasm);
-
+let client;
+let state = "loading";
 const config = {
   chainId: "big-bang-1",
   rpcEndpoint: "https://rpc.big-bang-1.stargaze-apis.com/",
@@ -42,29 +44,72 @@ const setupWebKeplr = async () => {
 };
 
 async function main() {
+  const mintButton = document.getElementById("mintButton");
+  const toggleButton = (t) => {
+    if (t) {
+      mintButton.classList.remove("secondary");
+      mintButton.innerHTML = "Mint";
+    } else {
+      mintButton.classList.add("secondary");
+      mintButton.innerHTML = "Loading...";
+    }
+  };
   // await window.keplr.enable(config.chainId);
   connectIfNotExists();
 
   const client = await setupWebKeplr(config);
+  const stargazeClient = await CosmWasmClient.connect(config.rpcEndpoint);
   console.log(client);
+  const ipfsURL = (url) => url.replace("ipfs:/", "https://ipfs.io/ipfs");
 
-  const sg721 = config.sg721;
+  // const sg721 = config.sg721;
 
   //These are just tests
 
-  const contract = await client.queryContractSmart(sg721, {
-    contract_info: {},
-  });
-  console.log(contract);
-  const token = await client.queryContractSmart(sg721, {
-    nft_info: { token_id: "1" },
-  });
+  // const contract = await client.queryContractSmart(sg721, {
+  //   contract_info: {},
+  // });
+  // console.log(contract);
+  // const token = await client.queryContractSmart(sg721, {
+  //   nft_info: { token_id: "1" },
+  // });
 
-  console.log(token);
+  // console.log(token);
+  state = "ready";
+  toggleButton(true);
+  mintButton.onclick = async (ev) => {
+    ev.preventDefault();
+    if (state === "ready") {
+      if (client) {
+        toggleButton(false);
+        mintButton.classList.add("secondary");
+        state = "transacting";
+        const tokenId = await mintSender(client, config);
 
-  const account = await client.getChainId();
-  console.log(account);
-  // mintSender(client, config);
+        const token = await client.queryContractSmart(config.sg721, {
+          nft_info: { token_id: tokenId },
+        });
+        console.log(token);
+        /*
+        {
+            "token_uri": "ipfs://bafybeidvpmkguc4pgcxap5nfcj4lrvko77qnw3t7jsiiabzpnotsujnq3q/galaxylRaspa/12",
+            "extension": {}
+        }*/
+
+        const cleanURL = ipfsURL(token.token_uri);
+        const response = await window.fetch(cleanURL);
+        const data = await response.json();
+        const imgSrc = ipfsURL(data.image);
+        const imgEl = document.getElementById("endala-img");
+        const imgWrapEl = document.getElementById("endala-img-wrap");
+
+        imgEl.src = imgSrc;
+        imgWrapEl.style.display = "block";
+        state = "ready";
+        toggleButton(true);
+      }
+    }
+  };
 }
 
 window.onload = function () {
