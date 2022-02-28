@@ -13,6 +13,6 @@
     "esmify": "^2.1.1"
   },
   "scripts": {
-    "build": "browserify  src/connectKeplr.js -p esmify > dist/index.js"
+    "build": "browserify  src/index.js -p esmify > dist/index.js"
   }
 }

@@ -14,3 +14,12 @@
 #endala-img {
   max-width: 75%;
 }
+
+#mint-progress-wrap,
+#endala-img-wrap {
+  display: none;
+}
+.progress-header {
+  color: white;
+  font-weight: bold;
+}

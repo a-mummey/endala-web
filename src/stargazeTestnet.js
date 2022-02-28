@@ -61,7 +61,7 @@ const testnetConfig = {
   },
 };
 
-const connectIfNotExists = async () => {
+const addTestnetToKeplr = async () => {
   let client;
   try {
     await window.keplr.enable(testnetConfig.chainId);
@@ -70,4 +70,4 @@ const connectIfNotExists = async () => {
   }
 };
 
-export default connectIfNotExists;
+export { addTestnetToKeplr };

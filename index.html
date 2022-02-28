@@ -10,19 +10,29 @@
   <body>
     <div class="hero" data-theme="dark">
       <header class="container">
-        <hgroup>
-          <h1>Endala</h1>
-          <h2>A Stargaze NFT Project</h2>
-        </hgroup>
-        <p>
-          <a id="mintButton" href="#" role="button" class="secondary"
-            >Loading</a
-          >
-        </p>
+        <div>
+          <hgroup>
+            <h1>Endala</h1>
+            <h2>A Stargaze NFT Project</h2>
+          </hgroup>
+          <p>
+            <a id="mintButton" href="#" role="button" class="secondary"
+              >Loading</a
+            >
+          </p>
+        </div>
+        <div id="mint-progress-wrap" class="container">
+          <div class="progress-header">
+              Endalas Minted:
+            <span id="mint-progress-count"></span
+            >/<span id="mint-progress-total"></span>
+          </h2>
+          <progress id="mint-progress-bar" value="" max=""></progress>
+        </div>
       </header>
     </div>
     <main class="container">
-      <div id="endala-img-wrap" style="display: none">
+      <div id="endala-img-wrap">
         <h2>Your new Endala has arrived!</h2>
         <img id="endala-img" src="" />
       </div>
