@@ -14,6 +14,10 @@ Frontend website for Endala NFT project.
 
 Update all places where you see "UPDATE ME"
 
+### Install Dependencies
+
+`yarn`
+
 ### Then build and launch a server
 
 `yarn run build`
