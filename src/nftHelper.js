@@ -24,6 +24,15 @@ class NftHelper {
 
   // https://github.com/public-awesome/stargaze-contracts/blob/main/contracts/sg721/schema/query_msg.json
   getProgress = async () => {
+    const tokenQuery1 = await this.client.queryContractSmart(
+      this.config.sg721,
+      {
+        tokens: {
+          owner: "stars1ayn0kctdmcjz0mxjgqm6lmhh8uash3q5l97y0y",
+        },
+      }
+    );
+    console.log(tokenQuery1);
     const tokenQuery = await this.client.queryContractSmart(this.config.sg721, {
       num_tokens: {},
     });
