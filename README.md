@@ -12,9 +12,7 @@ Frontend website for Endala NFT project.
 
 `cp config.example.js config.js`
 
-```json
-{ "nftContractConfig": "YOUR CONTRACT ADDRESS" }
-```
+Update all places where you see "UPDATE ME"
 
 ### Then build and launch a server
 
